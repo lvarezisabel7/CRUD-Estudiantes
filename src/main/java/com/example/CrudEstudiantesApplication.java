@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.entities.Correo;
 import com.example.entities.Curso;
 import com.example.entities.Estudiante;
 import com.example.entities.Genero;
@@ -126,42 +127,34 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 
 		Telefono tel1Estudiante1 = Telefono.builder()
 			.telefono("636871638")
-			.estudiante(estudianteService.dameUnEstudiante(1))
 			.build();
 		
 		Telefono tel2Estudiante1 = Telefono.builder()
 			.telefono("650338106")
-			.estudiante(estudianteService.dameUnEstudiante(1))
 			.build();
 		
 		Telefono tel1Estudiante2 = Telefono.builder()
 			.telefono("717119149")
-			.estudiante(estudianteService.dameUnEstudiante(2))
 			.build();
 		
 		Telefono tel1Estudiante3 = Telefono.builder()
 			.telefono("679323246")
-			.estudiante(estudianteService.dameUnEstudiante(3))
 			.build();
 		
 		Telefono tel2Estudiante3 = Telefono.builder()
 			.telefono("636871638")
-			.estudiante(estudianteService.dameUnEstudiante(3))
 			.build();
 		
 		Telefono tel1Estudiante4 = Telefono.builder()
 			.telefono("650338106")
-			.estudiante(estudianteService.dameUnEstudiante(4))
 			.build();
 		
 		Telefono tel1Estudiante5 = Telefono.builder()
 			.telefono("717119149")
-			.estudiante(estudianteService.dameUnEstudiante(5))
 			.build();
 		
 		Telefono tel1Estudiante6 = Telefono.builder()
 			.telefono("679323246")
-			.estudiante(estudianteService.dameUnEstudiante(6))
 			.build();
 		
 		telefonoService.persistirTelefono(1, tel1Estudiante1);
@@ -173,7 +166,39 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		telefonoService.persistirTelefono(5, tel1Estudiante5);
 		telefonoService.persistirTelefono(6, tel1Estudiante6);
 		
-	}
+		// Creamos los correos
+
+		Correo correo1 = Correo.builder()
+		.correo("alumno1@gmail.com")
+		.build();
+
+		Correo correo2 = Correo.builder()
+		.correo("alumno2@gmail.com")
+		.build();
+
+		Correo correo3 = Correo.builder()
+		.correo("alumno3@gmail.com")
+		.build();
+
+		Correo correo4 = Correo.builder()
+		.correo("alumno4@gmail.com")
+		.build();
+
+		Correo correo5 = Correo.builder()
+		.correo("alumno5@gmail.com")
+		.build();
+
+		Correo correo6 = Correo.builder()
+		.correo("alumno6@gmail.com")
+		.build();
+
+		correoService.persistirCorreo(1, correo1);
+		correoService.persistirCorreo(2, correo2);
+		correoService.persistirCorreo(3, correo3);
+		correoService.persistirCorreo(4, correo4);
+		correoService.persistirCorreo(5, correo5);
+		correoService.persistirCorreo(6, correo6);
+		}
 
 	
 
