@@ -26,8 +26,8 @@ public class TelefonoServiceImpl implements TelefonoService {
 
     @Override
     public void persistirTelefono(int idEstudiante, Telefono telefono) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'persistirTelefono'");
+        telefono.setEstudiante(estudianteDao.findById(idEstudiante).get());
+        telefonoDao.save(telefono);
     }
 
 }
