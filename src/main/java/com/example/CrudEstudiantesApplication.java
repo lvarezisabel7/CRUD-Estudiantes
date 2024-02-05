@@ -12,24 +12,24 @@ import lombok.RequiredArgsConstructor;
 
 @SpringBootApplication
 @RequiredArgsConstructor
-public class CrudEstudiantesApplication implements CommandLineRunner{
+public class CrudEstudiantesApplication {
 
-	private final EstudianteService estudianteService;
+	// private final EstudianteService estudianteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrudEstudiantesApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		Estudiante est1 = Estudiante.builder()
-				.nombre("Isabel")
-				.primerApellido("Alvarez")
-				.segundoApellido("Sanchez")
-				.genero(Genero.MUJER)
-				.build();
+	// @Override
+	// public void run(String... args) throws Exception {
+	// 	Estudiante est1 = Estudiante.builder()
+	// 			.nombre("Isabel")
+	// 			.primerApellido("Alvarez")
+	// 			.segundoApellido("Sanchez")
+	// 			.genero(Genero.MUJER)
+	// 			.build();
 
-		estudianteService.persistirEstudiante(est1);
-	}
+	// 	estudianteService.per
+	// }
 
 }

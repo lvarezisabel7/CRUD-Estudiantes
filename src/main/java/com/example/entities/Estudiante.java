@@ -11,6 +11,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -29,29 +32,31 @@ import lombok.NoArgsConstructor;
 
         private static final long serialVersionUID = 1L;
 
-    private int id;
-    private String nombre;
-    private String primerApellido;
-    private String segundoApellido;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private int id;
+        private String nombre;
+        private String primerApellido;
+        private String segundoApellido;
 
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
+        @Enumerated(EnumType.STRING)
+        private Genero genero;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate fechaMatriculacion;
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
+        private LocalDate fechaMatriculacion;
 
-    private int totalAsignaturasMatriculadas;
+        private int totalAsignaturasMatriculadas;
 
-    private String foto;
+        private String foto;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "estudiante")
-    private List<Correo> correos;
- 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "estudiante")
-    private List<Telefono> telefonos;
+        @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "estudiante")
+        private List<Correo> correos;
+    
+        @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "estudiante")
+        private List<Telefono> telefonos;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    private Curso curso;
+        @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+        private Curso curso;
 
 
 }
