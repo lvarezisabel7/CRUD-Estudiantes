@@ -21,8 +21,8 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public Curso dameUnCurso(int idDCurso) {
-        return cursoDao.findById(idDCurso).get();
+    public Curso dameUnCurso(int idCurso) {
+        return cursoDao.findById(idCurso).get();
     }
 
     @Override
