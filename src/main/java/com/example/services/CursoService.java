@@ -6,7 +6,7 @@ import com.example.entities.Curso;
 
 public interface CursoService {
     public List<Curso> dameCursos();
-    public Curso dameUnCurso(int idDCurso);
+    public Curso dameUnCurso(int idCurso);
     public void persistirCurso(Curso curso);
 
 }

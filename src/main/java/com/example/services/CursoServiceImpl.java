@@ -17,20 +17,17 @@ public class CursoServiceImpl implements CursoService{
 
     @Override
     public List<Curso> dameCursos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dameCursos'");
+        return cursoDao.findAll();
     }
 
     @Override
     public Curso dameUnCurso(int idDCurso) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dameUnCurso'");
+        return cursoDao.findById(idDCurso).get();
     }
 
     @Override
     public void persistirCurso(Curso curso) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'persistirCurso'");
+        cursoDao.save(curso);
     }
 
 }
