@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>CRUD de Estudiantes</h1>
+    <h3>Listado de Estudiantes</h3>
+
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+        </thead>
+        <tbody>
+            <tr th:each=" estudiante : ${estudiantes}">
+                <td th:text="${estudiante.nombre}"></td>
+                <td th:text="${estudiante.primerApellido}"></td>
+                <td th:text="${estudiante.segundoApellido}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
