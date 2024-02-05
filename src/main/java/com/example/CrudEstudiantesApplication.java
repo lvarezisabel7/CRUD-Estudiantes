@@ -121,7 +121,57 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		estudianteService.persistirEstudiante(est5);
 		estudianteService.persistirEstudiante(est6);
 
+		// Creamos los Telefonos
+		
 
+		Telefono tel1Estudiante1 = Telefono.builder()
+			.telefono("636871638")
+			.estudiante(estudianteService.dameUnEstudiante(1))
+			.build();
+		
+		Telefono tel2Estudiante1 = Telefono.builder()
+			.telefono("650338106")
+			.estudiante(estudianteService.dameUnEstudiante(1))
+			.build();
+		
+		Telefono tel1Estudiante2 = Telefono.builder()
+			.telefono("717119149")
+			.estudiante(estudianteService.dameUnEstudiante(2))
+			.build();
+		
+		Telefono tel1Estudiante3 = Telefono.builder()
+			.telefono("679323246")
+			.estudiante(estudianteService.dameUnEstudiante(3))
+			.build();
+		
+		Telefono tel2Estudiante3 = Telefono.builder()
+			.telefono("636871638")
+			.estudiante(estudianteService.dameUnEstudiante(3))
+			.build();
+		
+		Telefono tel1Estudiante4 = Telefono.builder()
+			.telefono("650338106")
+			.estudiante(estudianteService.dameUnEstudiante(4))
+			.build();
+		
+		Telefono tel1Estudiante5 = Telefono.builder()
+			.telefono("717119149")
+			.estudiante(estudianteService.dameUnEstudiante(5))
+			.build();
+		
+		Telefono tel1Estudiante6 = Telefono.builder()
+			.telefono("679323246")
+			.estudiante(estudianteService.dameUnEstudiante(6))
+			.build();
+		
+		telefonoService.persistirTelefono(1, tel1Estudiante1);
+		telefonoService.persistirTelefono(1, tel2Estudiante1);
+		telefonoService.persistirTelefono(2, tel1Estudiante2);
+		telefonoService.persistirTelefono(3, tel1Estudiante3);
+		telefonoService.persistirTelefono(3, tel2Estudiante3);
+		telefonoService.persistirTelefono(4, tel1Estudiante4);
+		telefonoService.persistirTelefono(5, tel1Estudiante5);
+		telefonoService.persistirTelefono(6, tel1Estudiante6);
 		
 	}
 
