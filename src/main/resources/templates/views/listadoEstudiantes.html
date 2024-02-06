@@ -21,7 +21,8 @@
                 <td th:text="${estudiante.primerApellido}"></td>
                 <td th:text="${estudiante.segundoApellido}"></td>
 
-                <td><a th:href="@{/detalles}">Detalles</a></td>
+                <a th:href="@{/detalles/}+${estudiante.id}">Detalles</a>
+                
             </tr>
         </tbody>
     </table>
