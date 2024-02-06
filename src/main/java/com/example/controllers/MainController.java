@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entities.Correo;
 import com.example.entities.Estudiante;
 import com.example.entities.Telefono;
 import com.example.services.CursoService;
@@ -89,6 +90,26 @@ public class MainController {
             estudiante.setTelefonos(telefonos);
 
             }
+
+            // Procesar los correos
+            if(correosRecibidos != null) {
+                String[] arrayCorreos = correosRecibidos.split(";");
+                List<String> direccionesDeCorreo = Arrays.asList(arrayCorreos);
+
+                List<Correo> correos = new ArrayList<>();
+
+                direccionesDeCorreo.stream()
+                    .forEach(direccionDeCorreo -> {
+                        correos.add(Correo.builder()
+                            .correo(direccionDeCorreo)
+                            .estudiante(estudiante)
+                            .build());
+                    
+                });
+
+            estudiante.setCorreos(correos);
+
+        }
                 estudianteService.persistirEstudiante(estudiante);
                 return "redirect:/all";
             }
