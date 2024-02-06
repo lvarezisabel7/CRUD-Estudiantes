@@ -6,20 +6,35 @@
     <title>Document</title>
 </head>
 <body>
+
+    <td>
+        <h1 th:text=" 'Detalles de ' + ${estudiante.nombre} + ' ' + ${estudiante.primerApellido} + ' ' + ${estudiante.segundoApellido}"></h1>
+    </td>
+
     <table>
         <thead>
-            <th>Género</th>
-            <th>Fecha de Matriculación</th>
-            <th>Asignaturas matriculadas</th>
+
+            <th>Género</th></div>
+            <td th:text="${estudiante.genero}"></td> 
+        
+            <tbody>
+                <th>Fecha de Matriculación</th>
+                <td th:text="${estudiante.fechaMatriculacion}"></td>
+            </tbody>
+        
+            
+           
+            <tbody>
+                <th>Asignaturas matriculadas</th>
+                <td th:text="${estudiante.totalAsignaturasMatriculadas}"></td>
+            </tbody>
+             
         </thead>
         <tbody>
-            <tr th:each=" estudiante : ${estudiantes}">
-                <td th:text="${estudiante.genero}"></td>
-                <td th:text="${estudiante.fechaMatriculacion}"></td>
-                <td th:text="${estudiante.totalAsignaturasMatriculadas}"></td>
-                <td th:text="${estudiante.correos}"></td>
-                <td th:text="${estudiante.telefonos}"></td>
+             <tr>
                 
-    <h1 th:text=" 'Detalles del Estudiante ' + ${estudiante.nombre}"></h1>
-</body>
+                </tr>
+            </tbody>
+        </table>
+    </body>
 </html>

@@ -34,8 +34,8 @@ public class MainController {
 
         LOG.info("El id del estudiante es: " + idEstudiante);
 
-        model.addAttribute("estudiante",
-                    estudianteService.dameUnEstudiante(idEstudiante)); 
+        model.addAttribute("estudiante", estudianteService.dameUnEstudiante(idEstudiante)); 
+        
         
 
         return "views/detallesEstudiante";
