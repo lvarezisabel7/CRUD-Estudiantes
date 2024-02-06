@@ -8,6 +8,9 @@
 <body>
     <h1>CRUD de Estudiantes</h1>
     <h3>Listado de Estudiantes</h3>
+    <div>
+        <a th:href="@{/frmAltaModificacion}">Formulario de Alta de  Empleado</a>
+    </div>
 
     <table>
         <thead>
@@ -16,16 +19,15 @@
             <th>Segundo Apellido</th>
         </thead>
         <tbody>
+            
             <tr th:each=" estudiante : ${estudiantes}">
                 <td th:text="${estudiante.nombre}"></td>
                 <td th:text="${estudiante.primerApellido}"></td>
                 <td th:text="${estudiante.segundoApellido}"></td>
                 <td>
                     <a th:href="@{/detalles/}+${estudiante.id}">Detalles</a>
-                
-                </td>
-                
-            </tr>
+                </td> 
+            </tr>          
         </tbody>
     </table>
 </body>
