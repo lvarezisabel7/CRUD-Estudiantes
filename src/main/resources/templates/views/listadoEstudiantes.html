@@ -26,7 +26,9 @@
                 <td th:text="${estudiante.segundoApellido}"></td>
                 <td>
                     <a th:href="@{/detalles/}+${estudiante.id}">Detalles</a>
+                    <a th:href="@{/modificar/}+${estudiante.id}">Modificar</a>
                     <a th:href="@{/eliminar/}+${estudiante.id}">Eliminar</a>
+                    
                 </td> 
             </tr>          
         </tbody>
