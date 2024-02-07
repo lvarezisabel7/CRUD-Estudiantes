@@ -128,6 +128,7 @@ public class MainController {
 
             // Actualizar estudiantes
             @GetMapping("/modificar/{id}")
+            @Transactional
             public String actualizarEstudiante(@PathVariable(name = "id", required = true) int idEstudiante, Model model) {
 
                 // Primero tengo que recuperar el estudiante del que se manda el id
@@ -156,6 +157,15 @@ public class MainController {
 
                 }
                 return "views/frmAltaModificacionEstudiante";
+            }
+
+            // Mostrar horario diurno
+            public String horarioDiurno(@PathVariable(name = "id") int idEstudiante, Model model){
+                
+                Curso curso = cursoService.dameUnCurso(idEstudiante);
+                model.addAttribute("curso", curso);
+                
+                return null;
             }
 
 
