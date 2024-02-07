@@ -5,36 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+    <body>
 
-    <td>
-        <h1 th:text=" 'Detalles de ' + ${estudiante.nombre} + ' ' + ${estudiante.primerApellido} + ' ' + ${estudiante.segundoApellido}"></h1>
-    </td>
-
-    <table>
-        <thead>
-
-            <th>Género</th></div>
-            <td th:text="${estudiante.genero}"></td> 
-        
-            <tbody>
-                <th>Fecha de Matriculación</th>
-                <td th:text="${estudiante.fechaMatriculacion}"></td>
-            </tbody>
-        
-            
-           
-            <tbody>
-                <th>Asignaturas matriculadas</th>
-                <td th:text="${estudiante.totalAsignaturasMatriculadas}"></td>
-            </tbody>
-             
-        </thead>
-        <tbody>
-             <tr>
-                
+        <td>
+            <h1 th:text=" 'Alumn@ ' + ${estudiante.nombre} + ' ' + ${estudiante.primerApellido} + ' ' + ${estudiante.segundoApellido}"></h1>
+        </td>
+        <fieldset> 
+            <table>
+                <tr>
+                   <legend>Detalles</legend>
                 </tr>
-            </tbody>
-        </table>
+                    <td th:text=" 'Género: ' + ${estudiante.genero}"></td> 
+                </tr>
+                <tr>
+                    
+                    <td th:text=" 'Asignaturas matriculadas: ' + ${estudiante.totalAsignaturasMatriculadas}"></td> 
+                </tr>
+                <tr>
+                    <td th:text=" 'Fecha de matriculación: ' + ${estudiante.fechaMatriculacion}"></td> 
+                </tr>
+                
+                
+               
+                
+            </table>
+        </fieldset>
     </body>
 </html>
