@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entities.Correo;
+import com.example.entities.Curso;
 import com.example.entities.Estudiante;
 import com.example.entities.Telefono;
 import com.example.services.CursoService;
@@ -35,7 +37,7 @@ public class MainController {
 
     @GetMapping("/all")
     public String dameEstudiantes(Model model) {
-
+    
     model.addAttribute("estudiantes", estudianteService.dameTodosLosEstudiantes());
 
     return "views/listadoEstudiantes";
@@ -122,6 +124,38 @@ public class MainController {
                 estudianteService.eliminarEstudiante(idEstudiante);
         
                 return "redirect:/all";
+            }
+
+            // Actualizar estudiantes
+            @GetMapping("/modificar/{id}")
+            public String actualizarEstudiante(@PathVariable(name = "id", required = true) int idEstudiante, Model model) {
+
+                // Primero tengo que recuperar el estudiante del que se manda el id
+                Estudiante estudiante = estudianteService.dameUnEstudiante(idEstudiante);
+                model.addAttribute("estudiante", estudiante);
+
+                // Recuperamos los cursos
+                List<Curso> cursos = cursoService.dameCursos();   
+                model.addAttribute("curso", cursos);
+                
+                // Construir los numeros de telefono (separados por ;), a partir de los tlfn recibidos conjuntamente con el estudiante
+                if(estudiante.getTelefonos() != null) {
+                    String numerosTelefono = estudiante.getTelefonos().stream()
+                        .map(Telefono::getTelefono)
+                        .collect(Collectors.joining(";"));
+                    model.addAttribute("numerosTelefono", numerosTelefono);
+
+                }
+
+                 // Construir los correos (separados por ;), a partir de los correos recibidos conjuntamente con el estudiante
+                 if(estudiante.getCorreos() != null) {
+                    String direccionesDeCorreo = estudiante.getCorreos().stream()
+                        .map(Correo::getCorreo)
+                        .collect(Collectors.joining(";"));
+                    model.addAttribute("direccionesDeCorreo", direccionesDeCorreo);
+
+                }
+                return "views/frmAltaModificacionEstudiante";
             }
 
 
