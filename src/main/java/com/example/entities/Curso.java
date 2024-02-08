@@ -37,6 +37,6 @@ public class Curso implements Serializable{
     private Horario horario;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "curso")
-    private List<Estudiante> estudiante;
+    private List<Estudiante> estudiantes;
 
 }

@@ -12,11 +12,15 @@
             <a th:href="@{/frmAltaModificacionEstudiante}">Formulario de Alta de Estudiantes</a>
         </div>
         <div>
-            <a th:href="@{/horarioDiurno}">Horario Diurno</a>
-        </div>
-        <div>
-            <a th:href="@{/horarioNocturno}">Horario Nocturno</a> 
-        </div>
+            <a th:href="@{/horarioDiurno/1}">Horario Diurno</a>
+            <div>
+                <label for="horarios">Horarios</label>
+            <input type="text" id="horarios" name="horarios"
+                placeholder="Separados por punto y coma"
+                    th:value="${horarios}"> 
+            </div>
+        </div>  
+        
 
     <table>
         <thead>
@@ -34,7 +38,7 @@
                     <a th:href="@{/detalles/}+${estudiante.id}">Detalles</a>
                     <a th:href="@{/modificar/}+${estudiante.id}">Modificar</a>
                     <a th:href="@{/eliminar/}+${estudiante.id}">Eliminar</a>
-                    
+                   
                 </td> 
             </tr>          
         </tbody>

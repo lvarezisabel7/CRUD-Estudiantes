@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.entities.Correo;
 import com.example.entities.Curso;
 import com.example.entities.Estudiante;
+import com.example.entities.Horario;
 import com.example.entities.Telefono;
 import com.example.services.CursoService;
 import com.example.services.EstudianteService;
@@ -50,6 +51,24 @@ public class MainController {
 
         model.addAttribute("estudiante", estudianteService.dameUnEstudiante(idEstudiante)); 
         
+        Estudiante estudiante = estudianteService.dameUnEstudiante(idEstudiante);
+        model.addAttribute("estudiante", estudiante);
+
+        if(estudiante.getTelefonos() != null) {
+            String numerosTelefono = estudiante.getTelefonos().stream()
+                .map(Telefono::getTelefono)
+                .collect(Collectors.joining(";"));
+            model.addAttribute("numerosTelefono", numerosTelefono);
+
+        }
+
+        if(estudiante.getCorreos() != null) {
+            String direccionesDeCorreo = estudiante.getCorreos().stream()
+                .map(Correo::getCorreo)
+                .collect(Collectors.joining(";"));
+            model.addAttribute("direccionesDeCorreo", direccionesDeCorreo);
+
+        }
         
 
         return "views/detallesEstudiante";
@@ -137,7 +156,7 @@ public class MainController {
 
                 // Recuperamos los cursos
                 List<Curso> cursos = cursoService.dameCursos();   
-                model.addAttribute("curso", cursos);
+                model.addAttribute("cursos", cursos);
                 
                 // Construir los numeros de telefono (separados por ;), a partir de los tlfn recibidos conjuntamente con el estudiante
                 if(estudiante.getTelefonos() != null) {
@@ -159,13 +178,27 @@ public class MainController {
                 return "views/frmAltaModificacionEstudiante";
             }
 
-            // Mostrar horario diurno
-            public String horarioDiurno(@PathVariable(name = "id") int idEstudiante, Model model){
+                // Mostrar horario diurno
+
+                @GetMapping("/horarioDiurno/{id}")
+                public String estudiantesPorHorario(@PathVariable(name = "id", required = true) int idEstudiante, Model model){
                 
-                Curso curso = cursoService.dameUnCurso(idEstudiante);
-                model.addAttribute("curso", curso);
+                Estudiante estudiante = estudianteService.dameUnEstudiante(idEstudiante);
+                model.addAttribute("estudiante", estudiante);
                 
-                return null;
+                List<Curso> cursos = cursoService.dameCursos();   
+                model.addAttribute("cursos", cursos);
+
+               
+    
+                List<Estudiante> estHorarioDiurno = estudianteService.dameTodosLosEstudiantes().stream() 
+                        .filter(est -> est.getCurso().getHorario().equals(Horario.DIURNO))
+                        .collect(Collectors.toList());
+                model.addAttribute("estHorarioDiurno", estHorarioDiurno);
+
+        
+    
+                return "views/listadoEstudiantes";
             }
 
 

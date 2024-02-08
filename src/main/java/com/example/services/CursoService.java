@@ -10,6 +10,5 @@ public interface CursoService {
     public List<Curso> dameCursos();
     public Curso dameUnCurso(int idCurso);
     public void persistirCurso(Curso curso);
-    public List<Estudiante> dameEstudiantesPorHorario(Horario horario);
 
 }

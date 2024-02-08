@@ -68,6 +68,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.MUJER)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 1))
 		.totalAsignaturasMatriculadas(8)
+		.curso(cursoService.dameUnCurso(1))
 		.build();
 
 		Estudiante est2 = Estudiante.builder()
@@ -77,6 +78,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.MUJER)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 1))
 		.totalAsignaturasMatriculadas(8)
+		.curso(cursoService.dameUnCurso(1))
 		.build();
 
 		Estudiante est3 = Estudiante.builder()
@@ -86,6 +88,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.HOMBRE)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 12))
 		.totalAsignaturasMatriculadas(6)
+		.curso(cursoService.dameUnCurso(2))
 		.build();
 
 		Estudiante est4 = Estudiante.builder()
@@ -95,6 +98,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.MUJER)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 1))
 		.totalAsignaturasMatriculadas(8)
+		.curso(cursoService.dameUnCurso(2))
 		.build();
 
 		Estudiante est5 = Estudiante.builder()
@@ -104,6 +108,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.HOMBRE)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 3))
 		.totalAsignaturasMatriculadas(4)
+		.curso(cursoService.dameUnCurso(3))
 		.build();
 
 		Estudiante est6 = Estudiante.builder()
@@ -113,6 +118,7 @@ public class CrudEstudiantesApplication implements CommandLineRunner{
 		.genero(Genero.MUJER)
 		.fechaMatriculacion(LocalDate.of(2023, Month.SEPTEMBER, 3))
 		.totalAsignaturasMatriculadas(5)
+		.curso(cursoService.dameUnCurso(3))
 		.build();
 
 		estudianteService.persistirEstudiante(est1);
