@@ -34,4 +34,12 @@ public class CursoServiceImpl implements CursoService{
         cursoDao.save(curso);
     }
 
+    @Override
+    public List<Estudiante> estudiantesPorHorario(Horario horario) {
+        return cursoDao.findByHorario(horario).stream()
+                .filter(curso -> curso.getHorario().equals(Horario.DIURNO))
+                .flatMap(curso -> curso.getEstudiantes().stream()) 
+                .collect(Collectors.toList());
+    }
+
 }
