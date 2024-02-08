@@ -12,13 +12,7 @@
             <a th:href="@{/frmAltaModificacionEstudiante}">Formulario de Alta de Estudiantes</a>
         </div>
         <div>
-            <a th:href="@{/horarioDiurno/1}">Horario Diurno</a>
-            <div>
-                <label for="horarios">Horarios</label>
-            <input type="text" id="horarios" name="horarios"
-                placeholder="Separados por punto y coma"
-                    th:value="${horarios}"> 
-            </div>
+            <a th:href="@{/horarioDiurno/{id}(id=${estudiante.id})}">Horario Diurno</a>
         </div>  
         
 

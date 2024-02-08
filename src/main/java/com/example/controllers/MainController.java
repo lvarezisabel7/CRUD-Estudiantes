@@ -180,26 +180,9 @@ public class MainController {
 
                 // Mostrar horario diurno
 
-                @GetMapping("/horarioDiurno/{id}")
-                public String estudiantesPorHorario(@PathVariable(name = "id", required = true) int idEstudiante, Model model){
                 
-                Estudiante estudiante = estudianteService.dameUnEstudiante(idEstudiante);
-                model.addAttribute("estudiante", estudiante);
-                
-                List<Curso> cursos = cursoService.dameCursos();   
-                model.addAttribute("cursos", cursos);
-
-               
-    
-                List<Estudiante> estHorarioDiurno = estudianteService.dameTodosLosEstudiantes().stream() 
-                        .filter(est -> est.getCurso().getHorario().equals(Horario.DIURNO))
-                        .collect(Collectors.toList());
-                model.addAttribute("estHorarioDiurno", estHorarioDiurno);
-
-        
-    
-                return "views/listadoEstudiantes";
-            }
+             
+            
 
 
 }
