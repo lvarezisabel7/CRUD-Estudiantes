@@ -100,7 +100,7 @@ public class MainController {
             @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos, 
             @RequestParam(name = "file", required = false) MultipartFile imagen){
         
-                // Comprobamos si hemos recibido un archivo de imagen 
+            // Comprobamos si hemos recibido un archivo de imagen 
             if(!imagen.isEmpty()) {
 
             // Vamos a trabajar todo el tiempo con NIO.2

@@ -10,7 +10,7 @@
 
     <fieldset>
         <legend>Formulario</legend>
-        <form th:object="${estudiante}" th:action="@{/persistir}" method="post">
+        <form th:object="${estudiante}" th:action="@{/persistir}" method="post" enctype="multipart/form-data">
             <input type="hidden" th:field="*{id}">
             
             <p>
