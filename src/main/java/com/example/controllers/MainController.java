@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.entities.Correo;
 import com.example.entities.Curso;
 import com.example.entities.Estudiante;
+import com.example.entities.Horario;
 import com.example.entities.Telefono;
 import com.example.services.CursoService;
 import com.example.services.EstudianteService;
@@ -50,6 +51,24 @@ public class MainController {
 
         model.addAttribute("estudiante", estudianteService.dameUnEstudiante(idEstudiante)); 
         
+        Estudiante estudiante = estudianteService.dameUnEstudiante(idEstudiante);
+        model.addAttribute("estudiante", estudiante);
+
+        if(estudiante.getTelefonos() != null) {
+            String numerosTelefono = estudiante.getTelefonos().stream()
+                .map(Telefono::getTelefono)
+                .collect(Collectors.joining(";"));
+            model.addAttribute("numerosTelefono", numerosTelefono);
+
+        }
+
+        if(estudiante.getCorreos() != null) {
+            String direccionesDeCorreo = estudiante.getCorreos().stream()
+                .map(Correo::getCorreo)
+                .collect(Collectors.joining(";"));
+            model.addAttribute("direccionesDeCorreo", direccionesDeCorreo);
+
+        }
         
 
         return "views/detallesEstudiante";
@@ -128,6 +147,7 @@ public class MainController {
 
             // Actualizar estudiantes
             @GetMapping("/modificar/{id}")
+            @Transactional
             public String actualizarEstudiante(@PathVariable(name = "id", required = true) int idEstudiante, Model model) {
 
                 // Primero tengo que recuperar el estudiante del que se manda el id
@@ -136,7 +156,7 @@ public class MainController {
 
                 // Recuperamos los cursos
                 List<Curso> cursos = cursoService.dameCursos();   
-                model.addAttribute("curso", cursos);
+                model.addAttribute("cursos", cursos);
                 
                 // Construir los numeros de telefono (separados por ;), a partir de los tlfn recibidos conjuntamente con el estudiante
                 if(estudiante.getTelefonos() != null) {
@@ -157,6 +177,18 @@ public class MainController {
                 }
                 return "views/frmAltaModificacionEstudiante";
             }
+
+                // Mostrar horario diurno
+
+                @GetMapping("/diurno/{idCurso}")
+                public String dameEstudiantesDiurno(Model model) {
+                    
+                    List<Estudiante> estudiantesDiurno = cursoService.estudiantesPorHorario(Horario.DIURNO);
+                    model.addAttribute("estudiantes", estudiantesDiurno);
+                    return "views/listadoEstudiantes";
+                }
+             
+            
 
 
 }

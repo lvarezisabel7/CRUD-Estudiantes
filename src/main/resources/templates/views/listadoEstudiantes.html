@@ -8,9 +8,13 @@
 <body>
     <h1>CRUD de Estudiantes</h1>
     <h3>Listado de Estudiantes</h3>
-    <div>
-        <a th:href="@{/frmAltaModificacionEstudiante}">Formulario de Alta de  Empleado</a>
-    </div>
+        <div>
+            <a th:href="@{/frmAltaModificacionEstudiante}">Formulario de Alta de Estudiantes</a>
+        </div>
+        <div>
+            <a th:href="@{/diurno/{id}}">Horario Diurno</a>
+        </div>  
+        
 
     <table>
         <thead>
@@ -28,7 +32,7 @@
                     <a th:href="@{/detalles/}+${estudiante.id}">Detalles</a>
                     <a th:href="@{/modificar/}+${estudiante.id}">Modificar</a>
                     <a th:href="@{/eliminar/}+${estudiante.id}">Eliminar</a>
-                    
+                   
                 </td> 
             </tr>          
         </tbody>
