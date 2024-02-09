@@ -28,6 +28,8 @@
         <tbody>
             
             <tr th:each=" estudiante : ${estudiantes}">
+                <!-- <td> <img th:src="@{/images/}+${estudiante.foto}" 
+                    th:alt="'Imagen del Estudiante: ' + ${estudiante.nombre}" width="100px" height="100%"></td> -->
                 <td th:text="${estudiante.nombre}"></td>
                 <td th:text="${estudiante.primerApellido}"></td>
                 <td th:text="${estudiante.segundoApellido}"></td>

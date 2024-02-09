@@ -24,24 +24,10 @@
                 <tr>
                     <td th:text=" 'Fecha de matriculación: ' + ${estudiante.fechaMatriculacion}"></td> 
                 </tr>
-                
-                <tr>
-                    <label for="telefonos">Telefonos</label>
-                <input type="text" id="telefonos" name="numerosTel"
-                    placeholder="Separados por punto y coma"
-                        th:value="${numerosTelefono}">
-                </tr>
-                <div>
-                    <label for="correos">Correos</label>
-                <input type="text" id="correos" name="direccionesCorreo"
-                    placeholder="Separados por punto y coma"
-                        th:value="${direccionesDeCorreo}"> 
-                </div>
-                     
 
                 
                 <img th:src="@{/images/}+${estudiante.foto}" 
-                alt="'Imagen del Estudiante: ' + ${estudiante.nombre}">
+                     th:alt="'Imagen del Estudiante: ' + ${estudiante.nombre}">
             <!-- en la url le indicamos en que carpeta esta la imagen; alt es texto alternativo pe descrip ciegos-->
                 
             </table>
