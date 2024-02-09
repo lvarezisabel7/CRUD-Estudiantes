@@ -42,4 +42,10 @@ public class CursoServiceImpl implements CursoService{
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Estudiante> estudiantesPorCurso(Curso curso) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'estudiantesPorCurso'");
+    }
+
 }
