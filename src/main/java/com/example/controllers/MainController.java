@@ -3,6 +3,7 @@ package com.example.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,7 @@ import com.example.entities.Horario;
 import com.example.entities.Telefono;
 import com.example.services.CursoService;
 import com.example.services.EstudianteService;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import lombok.RequiredArgsConstructor;
 
@@ -187,8 +189,23 @@ public class MainController {
                     model.addAttribute("estudiantes", estudiantesDiurno);
                     return "views/listadoEstudiantes";
                 }
+
+                // Mostrar estudiantes por curso
+                @GetMapping("/cursos/{idCurso}")
+                public String dameEstudiantesPorCurso(Model model) {
+
+              
+                List<Estudiante> estudiantes = estudianteService.dameTodosLosEstudiantes();
+                
+                Map<Curso, List<Estudiante>> m3 = estudiantes.stream()
+				            .collect(Collectors
+						    .groupingBy(Estudiante::getCurso));
+                model.addAttribute("m3", m3);
+                return "views/estudiantesPorCurso";
+                }
+        }
              
             
 
 
-}
+

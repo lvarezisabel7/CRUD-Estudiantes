@@ -14,6 +14,6 @@ import java.util.List;
 public interface CursoDao extends JpaRepository<Curso, Integer>{
 
     public List<Curso> findByHorario(Horario horario);
-    public List<Curso> findByCurso (Curso curso);
+   
 
 }

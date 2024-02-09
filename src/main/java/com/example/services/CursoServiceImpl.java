@@ -42,11 +42,6 @@ public class CursoServiceImpl implements CursoService{
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Estudiante> estudiantesPorCurso(Curso curso) {
-        return cursoDao.findByCurso(curso).stream()
-        .flatMap(c -> c.getEstudiantes().stream())
-        .collect(Collectors.toList());
-    }
+  
 
 }
