@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Listado de Cursos</h3>
+    <tr th:each=" entry : ${m3}">
+        <td th:text="${entry.key.descripcion}"></td>
+        <ul>
+            <li th:each="estudiante : *{entry.value}" 
+                    th:text="${estudiante.nombre} + ' ' + ${estudiante.primerApellido} 
+                        + ' ' + ${estudiante.segundoApellido}"></li>
+        </ul>
+    </tr>  
+  
+</div>
+</body>
+</html>
