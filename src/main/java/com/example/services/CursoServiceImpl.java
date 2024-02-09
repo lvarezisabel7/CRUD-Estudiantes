@@ -44,8 +44,9 @@ public class CursoServiceImpl implements CursoService{
 
     @Override
     public List<Estudiante> estudiantesPorCurso(Curso curso) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'estudiantesPorCurso'");
+        return cursoDao.findByCurso(curso).stream()
+        .flatMap(c -> c.getEstudiantes().stream())
+        .collect(Collectors.toList());
     }
 
 }
