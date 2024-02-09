@@ -1,5 +1,8 @@
 package com.example.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.entities.Correo;
 import com.example.entities.Curso;
@@ -93,7 +97,39 @@ public class MainController {
     @Transactional
     public String persistirEstudiante(@ModelAttribute(name = "estudiante") Estudiante estudiante,
             @RequestParam(name = "numerosTel", required = false) String telefonosRecibidos,
-            @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos) {
+            @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos, 
+            @RequestParam(name = "file", required = false) MultipartFile imagen){
+        
+            // Comprobamos si hemos recibido un archivo de imagen 
+            if(!imagen.isEmpty()) {
+
+            // Vamos a trabajar todo el tiempo con NIO.2
+
+            // Recuperar la ruta (Path) relativa de la carpeta donde quedara almacenado el archivo de imagen
+            Path imageFolder = Path.of("src/main/resources/static/images");
+
+            // Creamos la ruta absoluta
+            Path rutaAbsoluta = imageFolder.toAbsolutePath();
+
+            // Tambien necesitamos la ruta completa
+            Path rutaCompleta = Path.of(rutaAbsoluta + "/" + imagen.getOriginalFilename());
+
+
+                try {
+
+                    byte[] bytesImage = imagen.getBytes();
+                    Files.write(rutaCompleta, bytesImage);
+
+                    // Lo que resta es establecer la propiedad foto del Empleado al nombre original
+                    // del archivo recibido
+                    estudiante.setFoto(imagen.getOriginalFilename());
+
+                } catch (IOException e) {
+                    // TODO: handle exception
+                }
+
+        }
+
         
         // Procesar los telefonos
         if(telefonosRecibidos != null) {
